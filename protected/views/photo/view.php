@@ -18,13 +18,7 @@ $this->menu=array(
 
 <h1>View Photo #<?php echo $model->id; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'title',
-		'album_id',
-		'description',
-		'path',
-	),
-)); ?>
+<?php 
+	echo CHtml::image(Yii::app()->getBaseUrl(true) . $model->path, '', array('style' => 'width: 100%;'));
+	echo "<p>$model->description</p>";
+ ?>

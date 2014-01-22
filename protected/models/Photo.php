@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $title
  * @property integer $album_id
- * @property integer $description
+ * @property string $description
  * @property string $path
  *
  * The followings are the available model relations:
