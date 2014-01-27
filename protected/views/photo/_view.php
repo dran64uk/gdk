@@ -5,25 +5,12 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('album_id')); ?>:</b>
-	<?php echo CHtml::encode($data->album_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('path')); ?>:</b>
-	<?php echo CHtml::encode($data->path); ?>
-	<br />
-
+<?php
+	echo $data->title. "<br>";
+			echo CHtml::link( 
+			CHtml::image(Yii::app()->getBaseUrl(true) . $data->path, '', array('style' => 'width: 250px;')) . "<br>",
+			array('/photo/'.$data->id)
+			);
+?>
 
 </div>
