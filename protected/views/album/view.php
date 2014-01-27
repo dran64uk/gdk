@@ -3,7 +3,7 @@
 /* @var $model Album */
 
 $this->breadcrumbs=array(
-	'Albums'=>array('index'),
+	$model->user->username=>array('user/'.$model->user->id),
 	$model->title,
 );
 
@@ -16,14 +16,15 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Album #<?php echo $model->id; ?></h1>
+<h1><?php echo $model->user->username . '\'s ' .$model->title; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'title',
-		'user_id',
-		'type',
-	),
-)); ?>
+<?php 
+	foreach ($model->photos as $photo)
+	{
+		echo $photo->title. "<br>";
+			echo CHtml::link( 
+			CHtml::image(Yii::app()->getBaseUrl(true) . $photo->path, '', array('style' => 'width: 250px;')) . "<br>",
+			array('/photo/view/'.$photo->id)
+			);
+	}
+?>
