@@ -31,11 +31,11 @@ class PhotoController extends Controller
 				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
-			array('deny', // allow authenticated user to perform 'create' and 'update' actions
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
-			array('deny', // allow admin user to perform 'admin' and 'delete' actions
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
@@ -70,8 +70,12 @@ class PhotoController extends Controller
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
-			if($model->save())
+			$model->file = CUploadedFile::getInstance($model, 'file');
+			$model->path = '/files/'.$model->file->name;
+			if($model->save()) {
+				$model->file->saveAs('files/'.$model->file->name);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(

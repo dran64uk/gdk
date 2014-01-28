@@ -15,6 +15,7 @@
  */
 class Photo extends CActiveRecord
 {
+	public $file;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -31,10 +32,11 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, album_id, description, path', 'required'),
+			array('title, album_id, file', 'required'),
 			array('album_id, description', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>40),
 			array('path', 'length', 'max'=>250),
+			array('file', 'file', 'types'=>'jpg, gif, png'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, album_id, description, path', 'safe', 'on'=>'search'),
