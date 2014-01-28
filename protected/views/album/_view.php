@@ -5,21 +5,20 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+	<?php echo CHtml::encode($data->user->username) . "'s <b>" . CHtml::encode($data->title); ?></b>
+	<?php 
+		if ($data->public)
+			echo ": public";
+		else
+			echo ": private";
+	?>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('public')); ?>:</b>
-	<?php echo CHtml::encode($data->public); ?>
-	<br />
+	<?php
+		echo CHtml::link( 
+			CHtml::image(Yii::app()->getBaseUrl(true) . $data->photos[0]->path, '', array('style' => 'width: 250px;')) . "<br>",
+			array('/album/view/'.$data->id)
+			);	
+	?>
 
 
 </div>
