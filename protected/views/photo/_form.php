@@ -28,7 +28,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'album_id'); ?>
-		<?php echo $form->textField($model,'album_id'); ?>
+		<?php echo $form->dropDownList($model,'album_id', 
+		CHtml::listData(Album::model()->findAll(), 'id', 'title')); ?>
 		<?php echo $form->error($model,'album_id'); ?>
 	</div>
 
