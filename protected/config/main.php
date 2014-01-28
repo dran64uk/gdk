@@ -36,6 +36,7 @@ return CMap::mergeArray(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+			'autoRenewCookie'=>true,	
 		),
 		// uncomment the following to enable URLs in path-format
 		
