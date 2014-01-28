@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $username
  * @property string $password
- * @property string $type
+ * @property bool $admin
  *
  * The followings are the available model relations:
  * @property Album[] $albums
@@ -30,13 +30,13 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, type', 'required'),
+			array('username, password, admin', 'required'),
 			array('username', 'length', 'max'=>40),
 			array('password', 'length', 'max'=>64),
-			array('type', 'length', 'max'=>5),
+			array('admin', 'boolean'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, type', 'safe', 'on'=>'search'),
+			array('id, username, password, admin', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +61,7 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'username' => 'Username',
 			'password' => 'Password',
-			'type' => 'Type',
+			'admin' => 'Admin',
 		);
 	}
 
@@ -86,7 +86,7 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('admin',$this->admin,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
