@@ -1,9 +1,14 @@
+<head>
+<link type="text/css" rel="stylesheet" href="s.css" /> 
+</head>
+
 <?php
 /* @var $this SiteController */
 /* @var $model Album with Photos */
 $this->pageTitle=Yii::app()->name;
 ?>
 <h1>Albums</h1>
+
 
 <?php
 	foreach ($model as $album) {
