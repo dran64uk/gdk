@@ -98,8 +98,12 @@ class PhotoController extends Controller
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
-			if($model->save())
+			$model->file = CUploadedFile::getInstance($model, 'file');
+			$model->path = '/files/'.$model->file->name;
+			if($model->save()) {
+				$model->file->saveAs('files/'.$model->file->name);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(
