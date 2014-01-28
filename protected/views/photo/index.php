@@ -5,6 +5,13 @@
 $this->breadcrumbs=array(
 	'Photos',
 );
+
+$this->menu=array(
+	array('label'=>'List Photo', 'url'=>array('index')),
+	array('label'=>'Create Photo', 'url'=>array('create')),
+	array('label'=>'Manage Photo', 'url'=>array('admin')),
+);
+
 ?>
 
 <h1>Photos</h1>

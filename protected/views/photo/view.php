@@ -7,6 +7,14 @@ $this->breadcrumbs=array(
 	$model->album->title=>array('album/'.$model->album->id),
 	$model->title,
 );
+
+$this->menu=array(
+	array('label'=>'List Photo', 'url'=>array('index')),
+	array('label'=>'Create Photo', 'url'=>array('create')),
+	array('label'=>'View Photo', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Manage Photo', 'url'=>array('admin')),
+);
+
 ?>
 
 <h1><?php echo $model->album->title . ': ' . $model->title; ?></h1>
