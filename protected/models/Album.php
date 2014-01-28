@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $title
  * @property integer $user_id
- * @property string $type
+ * @property bool $public
  *
  * The followings are the available model relations:
  * @property User $user
@@ -31,13 +31,13 @@ class Album extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, user_id, type', 'required'),
+			array('title, user_id, public', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>40),
-			array('type', 'length', 'max'=>9),
+			array('public', 'boolean'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, user_id, type', 'safe', 'on'=>'search'),
+			array('id, title, user_id, public', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +63,7 @@ class Album extends CActiveRecord
 			'id' => 'ID',
 			'title' => 'Title',
 			'user_id' => 'User',
-			'type' => 'Type',
+			'public' => 'Public',
 		);
 	}
 
@@ -88,7 +88,7 @@ class Album extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('public',$this->public,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -17,8 +17,8 @@
 	<?php echo CHtml::encode($data->user_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
-	<?php echo CHtml::encode($data->type); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('public')); ?>:</b>
+	<?php echo CHtml::encode($data->public); ?>
 	<br />
 
 
