@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Янв 21 2014 г., 13:03
+-- Время создания: Янв 29 2014 г., 09:11
 -- Версия сервера: 5.5.16
 -- Версия PHP: 5.3.8
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `album` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(40) NOT NULL,
+  `title` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `type` enum('private','protected','public') NOT NULL,
+  `public` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -44,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(40) NOT NULL,
   `album_id` int(11) NOT NULL,
-  `description` int(11) NOT NULL,
+  `description` varchar(150) NOT NULL,
   `path` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(40) NOT NULL,
   `password` varchar(64) NOT NULL,
-  `type` enum('admin','user') NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
