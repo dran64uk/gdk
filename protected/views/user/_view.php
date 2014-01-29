@@ -11,7 +11,7 @@
 	<?php 
 
 		foreach ($data->albums as $album) {
-			echo '<li>'. CHtml::link($album->title, array('/album/view/'.$album->id)). '</li>';
+			echo '<li>'. CHtml::link($album->title, array('/album/view/'.$album->id)) . '</li>';
 		}
 	?>
 	</ul>

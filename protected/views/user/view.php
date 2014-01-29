@@ -16,14 +16,11 @@ $this->menu=array(
 );
 ?>
 
-<h1>View User #<?php echo $model->id; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'username',
-		'password',
-		'type',
-	),
-)); ?>
+<h1>User: <?php echo $model->username; ?></h1>
+<ul>
+<?php 
+	foreach ($model->albums as $album) {
+			echo '<li>'. CHtml::link($album->title, array('/album/view/'.$album->id)) . '</li>';
+		}
+?>
+</ul>

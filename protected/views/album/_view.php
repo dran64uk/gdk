@@ -13,12 +13,6 @@
 			echo ": private";
 	?>
 	<br />
-	<?php
-		echo CHtml::link( 
-			CHtml::image(Yii::app()->getBaseUrl(true) . $data->photos[0]->path, '', array('style' => 'width: 250px;')) . "<br>",
-			array('/album/view/'.$data->id)
-			);	
-	?>
 
 
 </div>
